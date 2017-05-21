@@ -1,6 +1,7 @@
 # pymotiontracker
 Want to track head or hand movement in your Python application or game?
-**pymotiontracker** is a simple Python 3 library to continuously reading values from the MPU6050 Bluetooth device on a 
+
+**pymotiontracker** is a simple Python 3 library to continuously read values from an MPU6050 Bluetooth device on a 
 non-blocking I/O thread.
 These values include:
 - Acceleration in X,Y,Z
