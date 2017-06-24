@@ -55,7 +55,7 @@ Currently PyBluez only supports Linux and Windows.
 ### 4. Displaying tracked values to console
 
 To get quickly up and running with a short example, modify
-[src/pymotiontracker.py](src/pymotiontracker.py) and modify the line:
+[src/motiontracker.py](src/motiontracker.py) and modify the line:
 ```python
 session = MotionTracker(bd_addr="20:16:09:21:48:81")
 ```
@@ -75,7 +75,7 @@ alt="MPU6050 Bluetooth motion tracker, console demonstration" width="240" height
 
 I managed to find some documentation floating around on the web, checkout *doc/MPU6050 User manual.pdf* for more details on the module and example C code.
 
-Examining [src/pymotiontracker.py](src/pymotiontracker.py) you will notice that reading from the module happens via a non blocking I/O thread. Upon starting the module, give a second or two for values to "settle in".
+Examining [src/motiontracker.py](src/motiontracker.py) you will notice that reading from the module happens via a non blocking I/O thread. Upon starting the module, give a second or two for values to "settle in".
 
 The MPU6050 Bluetooth module supports RFCOMM protocol making reading from the module relatively simple.
 
