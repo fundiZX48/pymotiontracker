@@ -105,8 +105,8 @@ class MotionTracker(object):
                 ll = re.findall(r"\d+\.?\d*", data)
 
                 self.acc_x = float('%.6f' % float(ll[2]))
-                self.acc_x = float('%.6f' % float(ll[3]))
-                self.acc_x = float('%.6f' % float(ll[4]))
+                self.acc_y = float('%.6f' % float(ll[3]))
+                self.acc_z = float('%.6f' % float(ll[4]))
                 print("acc(g):%.6f %.6f %.6f" % (self.acc_x,self.acc_y,self.acc_z))
 
                 self.angv_x = float('%.6f' % float(ll[5]))
