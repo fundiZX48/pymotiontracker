@@ -6,7 +6,9 @@ Track device rotational movement and display to screen in form of a 3D OpenGL cu
 
 import sys
 sys.path.insert(0, "../src")
-import motiontracker
+#import motiontracker
+#import motiontracker_serial
+import motiontracker_tcp
 
 import pygame
 from pygame.locals import *
@@ -163,7 +165,10 @@ def main():
     glTranslated(0.0, 0.0, -5.0)
 
     # Start motion sensor
-    motion_session = motiontracker.MotionTracker(bd_addr="20:16:09:21:48:81")
+    #motion_session = motiontracker.MotionTracker(bd_addr="20:16:09:21:48:81")
+    #motion_session = motiontracker_serial.MotionTracker()
+    motion_session = motiontracker_tcp.MotionTracker(bd_addr='', port=10000)
+    
     motion_session.start_read_data()
     print("Calibrating, do not move Bluetooth module!")
     # Allow read values to "settle in"
