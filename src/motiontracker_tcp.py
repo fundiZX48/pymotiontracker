@@ -104,14 +104,14 @@ class MotionTracker(object):
                 # data = heard('$$$$') + type(0/1) + acc + gyro + g + mag + omt
                 ll = re.findall(r"\d+\.?\d*", data)
 
-                self.acc_x = float('%.6f' % float(ll[2]))
-                self.acc_y = float('%.6f' % float(ll[3]))
-                self.acc_z = float('%.6f' % float(ll[4]))
+                self.acc_x = float('%.6f' % float(ll[1]))
+                self.acc_y = float('%.6f' % float(ll[2]))
+                self.acc_z = float('%.6f' % float(ll[3]))
                 print("acc(g):%.6f %.6f %.6f" % (self.acc_x,self.acc_y,self.acc_z))
 
-                self.angv_x = float('%.6f' % float(ll[5]))
-                self.angv_y = float('%.6f' % float(ll[6]))
-                self.angv_z = float('%.6f' % float(ll[7]))
+                self.angv_x = float('%.6f' % float(ll[4]))
+                self.angv_y = float('%.6f' % float(ll[5]))
+                self.angv_z = float('%.6f' % float(ll[6]))
                 print("angv(g):%.6f %.6f %.6f" % (self.angv_x,self.angv_y,self.angv_z))
 
                 self.ang_x = float('%.6f' % float(ll[13]))
