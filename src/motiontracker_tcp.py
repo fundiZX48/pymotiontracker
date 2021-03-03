@@ -53,6 +53,10 @@ class MotionTracker(object):
         #Start listening on socket
         self.sock.listen(10)
         print 'Socket now listening'
+        
+        #wait to accept a connection - blocking call
+        self.conn, addr = self.sock.accept()
+        print 'Connected with ' + addr[0] + ':' + str(addr[1])
 
         self.acc_x = 0.0
         self.acc_y = 0.0
@@ -91,15 +95,11 @@ class MotionTracker(object):
     def __read_device_data(self):
         """Private method to read device data in 9 byte blocks.
         """
-        #wait to accept a connection - blocking call
-        conn, addr = self.sock.accept()
-        print 'Connected with ' + addr[0] + ':' + str(addr[1])
-
         while self.__thread_read_device_data.is_running:
             while True:
 
                 #Receiving from client
-                data = conn.recv(1024)
+                data = self.conn.recv(1024)
                 print data
                 # data = heard('$$$$') + type(0/1) + acc + gyro + g + mag + omt
                 ll = re.findall(r"\d+\.?\d*", data)
@@ -114,19 +114,19 @@ class MotionTracker(object):
                 self.angv_z = float('%.6f' % float(ll[7]))
                 print("angv(g):%.6f %.6f %.6f" % (self.angv_x,self.angv_y,self.angv_z))
 
-                self.ang_x = float('%.6f' % float(ll[8]))
-                self.ang_y = float('%.6f' % float(ll[9]))
-                self.ang_z = float('%.6f' % float(ll[10]))
+                self.ang_x = float('%.6f' % float(ll[13]))
+                self.ang_y = float('%.6f' % float(ll[14]))
+                self.ang_z = float('%.6f' % float(ll[15]))
                 print("ang(g):%.6f %.6f %.6f" % (self.ang_x,self.ang_y,self.ang_z))
 
                 reply = 'OK...' + data
                 if not data: 
                     break
 
-                #conn.sendall(reply)
+                #self.conn.sendall(reply)
 
             #came out of loop
-            conn.close()
+            self.conn.close()
 
 
 
