@@ -170,6 +170,8 @@ Have fun!
 - [ ] A simple Pygame based game!
 - [ ] Scale down and go wireless
 
+- [x] Add Class to read from a Serial MPU6050 device
+- [x] Add Class to read from a TCP Mobile device
 
 
 
